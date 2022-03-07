@@ -35,7 +35,7 @@ void Deletion(struct Node **head, int position){
 
 // Deletion at the Beginning 
 struct Node * DeleteAtBeginning(struct Node * head){
-	struct Node *p = head;
+	struct Node *ptr = head;
 	head = head->next;
 	free(ptr);
 
