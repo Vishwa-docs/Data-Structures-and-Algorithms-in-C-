@@ -27,6 +27,13 @@ void peek (struct Node *head){
   return;
 }
 
+void isEmpty(struct Node *head){
+	if (head->next == NULL)
+		printf("The stack is empty");
+	else
+		printf("List is not empty");
+}
+
 int main(){
 	struct Node *head; // Struct pointer, NOT instance
 	struct Node *second;
