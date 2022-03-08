@@ -76,7 +76,7 @@ struct Node * InsertAtEnd (struct Node *head, int data){
 }
 
 // Insert after Node
-struct Node * InsertAtEnd (struct Node *head, struct Node *prevNode, int data){
+struct Node * InsertAfterNode (struct Node *head, struct Node *prevNode, int data){
 	struct Node *ptr = (struct Node *) malloc (sizeof(struct Node));
 	ptr->data = data;
 
