@@ -10,8 +10,7 @@ struct Node {
 
 void LLTraversal(struct Node *head){
 	struct Node *current = head;
-	int count = 0;
-
+	
 	while (current != NULL){
 		printf("Element %d\n", current->data); 
 		current = current->next;
