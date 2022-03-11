@@ -1,21 +1,5 @@
-// Objective : To Find the starting Node of a cycle in a Linked List
-
-/*
-After finding the loop, we initialize the slow_ptr to head of linked list and make the slow and fast ptr move only one step at a time
-The point they meet is at the start of the loop
-*/
-
-/*
-Program Analysis : 
-Time Complexity : O(n) and Space complexity : O(1)
-
-Why Do they meet at the beginning of the loop?
-Solved using Number Theory
-The slow and fast pointer will meet when they are n x L (L is loop length)
-The slow ptr is at the midpoint between the fast and the beginning of sequence because of how they move
-So, the slow ptr is always n x L away from the beginning as well
-If we move one step at a time, they will meet exacty when the loop starts (Since they are n x L : a multiple of loop length apart)
-*/
+// To delete a loop present in a linked list
+// Reference : https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +9,7 @@ struct Node {
     struct Node *next;
 };
 
-struct Node * Beginning_of_Loop(struct Node *head){
+int Delete_Loop(struct Node *head){
   struct Node *slow_ptr = head;
   struct Node *fast_ptr = head;
   int loopExists = 0;
@@ -36,21 +20,35 @@ struct Node * Beginning_of_Loop(struct Node *head){
     fast_ptr = fast_ptr->next->next;
 
     if (slow_ptr == fast_ptr){
-    	loopExists = 1;
-    	break;
+      loopExists = 1;
+      break;
     }
   }
 
+  struct Node *auxilaryNode;
+
   if (loopExists){
-  	slow_ptr = head;
-  	while (slow_ptr != fast_ptr){
-	    slow_ptr = slow_ptr->next;
-	    fast_ptr = fast_ptr->next;
-  	}
-  	return slow_ptr;
-  } else {
-    return NULL;
+    slow_ptr = head;
+    while (slow_ptr != fast_ptr){
+      slow_ptr = slow_ptr->next;
+      fast_ptr = fast_ptr->next;
+    }
+    
+    do {
+      auxilaryNode = fast_ptr -> next;;
+      free(fast_ptr);
+      fast_ptr = auxilaryNode;
+    } while (fast_ptr != slow_ptr);
+
+    slow_ptr->next = NULL;
+
+    return 1;
   }
+
+  else {
+    return -1;
+  }
+
 }
 
 int main(){
@@ -86,12 +84,13 @@ int main(){
     sixth->data = 80;
     sixth->next = third;
 
-    struct Node * ans = Beginning_of_Loop(head);
+    int ans = Delete_Loop(head);
 
-    if (ans != NULL){
-      printf("Loop Begins at : %d", ans->data);
+    if (ans == -1){
+      printf("Loop does not exist");
     } else {
-      printf("Loop does not Exist");
+       printf("Loop Deleted");
     }
+
     return 0;
 }
