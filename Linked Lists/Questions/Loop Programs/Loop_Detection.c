@@ -134,7 +134,7 @@ int main(){
     fifth->next = sixth;
 
     sixth->data = 80;
-    sixth->next = NULL;
+    sixth->next = second;
 
     if (Floyd_Loop(head))
         printf("There is a loop in the Linked List");
