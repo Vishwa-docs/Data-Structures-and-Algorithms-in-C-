@@ -71,10 +71,6 @@ void Pop(struct Stack *S){
 	}
 }
 
-int Peek(struct Stack *S){
-	return S->top;
-}
-
 int Peek_Index(struct Stack *S, int i){
 	int arrayInd = S->top - i + 1;
 	if (arrayInd < 0){
@@ -96,7 +92,8 @@ void DeleteStack(struct Stack *S){
 }
 
 // Stack Top and Bottom Elements : 
-int Stack_Top(struct Stack *S){
+// Same as PEEK Function
+int PEEK_Stack_Top(struct Stack *S){
 	return S->array[S->top];
 }
 
