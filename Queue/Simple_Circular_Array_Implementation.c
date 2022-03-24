@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 struct Queue{
 	int front, rear;
 	int capacity;
