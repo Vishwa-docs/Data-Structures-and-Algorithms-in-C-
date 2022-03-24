@@ -1,3 +1,5 @@
+// Also called Symbol Balancing
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,39 +10,27 @@ struct Stack{
 };
 
 int isEmpty(struct Stack *ptr){
-	if (ptr->top == -1)
-		return 1;
-	else
-		return 0;
-	// return (S->top = -1) // If it is true then return 1 else return 0
+	return ptr->top == -1;
 }
 
 int isFull(struct Stack *ptr){
-	if (ptr->top == ptr->size - 1)
-		return 1;
-	else
-		return 0;
-	// return (S->top == S->capacity - 1)
+	return ptr->top == ptr->size - 1;
 }
 
 void Push(struct Stack *ptr, char data){
 	if(isFull(ptr)){
 		printf("Stack Overflow");
-		return;
-	}
-	else {
-    ptr->top++;
-    ptr->array[ptr->top] = data;
-		return;
+	} else {
+		ptr->top++;
+		ptr->array[ptr->top] = data;
 	}
 }
 
 char Pop(struct Stack *ptr){
 	if (isEmpty(ptr)){
 		printf("Stack Underflow");
-		return 'a';
-	}
-	else{
+		return -1;
+	} else {
 		char val = ptr->array[ptr->top];
 		ptr->top--;
 		return val;
@@ -56,8 +46,7 @@ int Single_Paranthesis_Match(char * exp){
 	for (int i = 0; exp[i] != '\0'; i++){
 		if (exp[i] == '('){
 			Push(sp, '(');
-		}
-		else if (exp[i] == ')'){
+		} else if (exp[i] == ')'){
 			if (isEmpty(sp)){
 				return 0;
 			}
