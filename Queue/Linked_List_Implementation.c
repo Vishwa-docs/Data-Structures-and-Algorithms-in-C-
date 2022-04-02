@@ -75,3 +75,46 @@ void Delete_Queue(struct Queue *Q){
 	}
 	free(Q);
 }
+
+
+
+
+/***********   Alternative   ***********/
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
+struct Node{
+	int data;
+	struct Node *next;
+};
+
+void Enqueue(int data){
+	struct Node *newNode = (struct Node *) malloc (sizeof(struct Node));
+	if (newNode == NULL){
+		printf("Queue Overflow\n");
+	} else {
+		newNode->data = data;
+		newNode->next = NULL;
+
+		if (front == NULL){
+			front = rear = newNode;
+		} else {
+			rear->next = newNode;
+			rear = newNode;
+		}
+	}
+}
+
+
+int Dequeue(){
+	int val;
+	struct Node *ptr = front;
+	if (front == NULL){
+		printf("Queue Underflow\n");
+	} else {
+		front = front->next;
+		val = ptr->data;
+		free(ptr);
+	}
+	return val;
+}
