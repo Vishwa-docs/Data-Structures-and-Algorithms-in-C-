@@ -7,7 +7,7 @@ struct Queue{
 	int *array;
 };
 
-struct Queuec* Create_Queue(int size){
+struct Queue * Create_Queue(int size){
 	struct Queue *Q = malloc (sizeof(struct Queue));
 	if (!Q)
 		return NULL;
@@ -23,7 +23,7 @@ struct Queuec* Create_Queue(int size){
 }
 
 int isEmpty(struct Queue *Q){
-	return (Q->front == -1);
+	return (Q->front == -1 || Q->rear == Q->front);
 }
 
 int isFull (struct Queue *Q){
@@ -36,7 +36,7 @@ int QueueSize(){
 
 void Enque(struct Queue *Q, int data){
 	if (isFull(Q))
-		printf("Queue Overflow");
+		printf("Queue Overflow\n");
 
 	else {
 		Q->rear = (Q->rear + 1) % Q->capacity;
