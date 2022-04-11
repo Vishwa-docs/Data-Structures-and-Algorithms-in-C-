@@ -21,11 +21,13 @@ void Display(struct Node *ptr){
 	}
 }
 
+/*
 struct Stack * Create_Stack(){
 	return NULL;
 } 
+*/
 
-// Is Full cna be checked
+// Is Full can be checked
 void Push(struct Stack **top, int data){
 	struct Stack *temp;
 	temp = (struct Stack *)malloc(sizeof(struct Stack));

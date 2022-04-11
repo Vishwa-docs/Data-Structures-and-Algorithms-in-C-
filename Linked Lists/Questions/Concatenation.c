@@ -1,3 +1,5 @@
+// Try for list Multiplication
+
 void concatenate(struct Node *a,struct Node *b){
     if(a != NULL && b!= NULL){
         if (a->next == NULL)
