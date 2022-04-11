@@ -27,7 +27,7 @@ int isFull(struct Stack *S){
 }
 
 void Double_Stack(struct Stack *S){
-	S=>capacity *= 2;
+	S->capacity *= 2;
 	S->array = realloc(S->array, S->capacity * sizeof(int)); // Realloc attempts to reallocate the memory with the new size
 }
 
