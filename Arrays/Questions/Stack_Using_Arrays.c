@@ -9,17 +9,11 @@ struct stack{
 
 
 int isEmpty(struct stack *ptr){
-  if (ptr->top == -1)
-    return 1;
-  else
-    return 0;
+  return (ptr->top == -1);
 }
 
 int isFull(struct stack *ptr){
-  if (ptr->top == ptr->size -1)
-    return 1;
-  else
-    return 0;
+  return (ptr->top == ptr->size -1);
 }
 
 void push(struct stack *ptr, int val){
@@ -29,7 +23,6 @@ void push(struct stack *ptr, int val){
     ptr->top++;
     ptr->arr[ptr->top] = val;
   }
-
   return;
 }
 
@@ -37,8 +30,7 @@ int pop(struct stack *ptr){
   if(isEmpty(ptr)){
     printf("Stack Underflow, cannot be popped");
     return -1;
-  }
-  else {
+  } else {
     int val = ptr->arr[ptr->top];
     ptr->top--;
     return val;
@@ -51,11 +43,10 @@ int peek(struct stack *ptr){
 
 int search(struct stack *ptr, int ind){
   int arrayInd = ptr->top - ind + 1;
-  if (arrayInd
-     < 0){
+  if (arrayInd < 0){
     printf("Not a valid position for the stack\n");
     return -1;
-     }
+  }
 
   else {
     return ptr->arr[arrayInd];
@@ -73,13 +64,13 @@ int main(void){
   s->size = 100;
   s->top = -1;
   s->arr = (int *)malloc(size-> * sizeof(int));
-/*
-Other Method :
-struct stack s;
-s.size = 100;
-s.top = -1;
-s.arr = (int *) malloc (s.size * sizeof(int));
-*/
+  /*
+  Other Method :
+  struct stack s;
+  s.size = 100;
+  s.top = -1;
+  s.arr = (int *) malloc (s.size * sizeof(int));
+  */
 
   // Manually Pusing elements : 
   s->arr[0] = 8;
