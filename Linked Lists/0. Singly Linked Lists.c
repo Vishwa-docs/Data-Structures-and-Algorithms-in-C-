@@ -35,7 +35,7 @@ void Insertions(struct Node **head, int data, int position){
 
 	// Insertion at Beginning
 	if (position == 1){
-		newNode->ext = p;
+		newNode->next = p;
 		*head = newNode;
 	}
 
@@ -75,11 +75,13 @@ void Deletion(struct Node **head, int position){
 			p = p->next;
 		}
 
-		if (p == NULL) // At the end
-			printf("Position does not exist")
-		else // From the Middle
+		if (p == NULL){ // At the end
+			printf("Position does not exist");
+		}
+		else{ // From the Middle
 			q->next = p->next;
 			free(p);
+		}
 	}
 }
 
